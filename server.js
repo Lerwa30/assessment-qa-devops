@@ -1,6 +1,16 @@
 const express = require("express");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
+// include and initialize the rollbar library with your access token
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: 'cb4fb5b2f970471c882d9d89e7cd226b',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
 
 const playerRecord = {
   wins: 0,
@@ -46,6 +56,7 @@ app.get("/api/robots", (req, res) => {
 });
 
 app.get("/api/robots/shuffled", (req, res) => {
+  rollbar.info('shuffled random bots successfully');
   try {
     let shuffled = shuffle(bots);
     res.status(200).send(shuffled);

@@ -9,7 +9,7 @@ describe('shuffle should...', () => {
     expect(shuffle([1, 2, 3])).toHaveLength(3);
   })
 
-  test('check items in array', () => {
+  test('check if items contained in array', () => {
     expect(shuffle([4, 5, 6])).toContain(4, 5, 6);
   })
 });
