@@ -50,6 +50,7 @@ app.get("/api/robots", (req, res) => {
   try {
     res.status(200).send(botsArr);
   } catch (error) {
+    rollbar.info('got error pressing See All Bots')
     console.error("ERROR GETTING BOTS", error);
     res.sendStatus(400);
   }
@@ -67,6 +68,7 @@ app.get("/api/robots/shuffled", (req, res) => {
 });
 
 app.post("/api/duel", (req, res) => {
+  rollbar.info('started a duel with computer bots')
   try {
     const { compDuo, playerDuo } = req.body;
 
