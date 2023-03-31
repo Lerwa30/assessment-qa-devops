@@ -8,4 +8,8 @@ describe('shuffle should...', () => {
   test('check array length to be the same', () => {
     expect(shuffle([1, 2, 3])).toHaveLength(3);
   })
+
+  test('check items in array', () => {
+    expect(shuffle([4, 5, 6])).toContain(4, 5, 6);
+  })
 });
