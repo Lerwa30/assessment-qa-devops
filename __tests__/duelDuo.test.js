@@ -17,10 +17,11 @@ describe("Duel Duo tests", () => {
     await driver.wait(until.titleIs("Duel Duo"), 1000);
   });
 
-  // test("draw button should display div", async () => {
-  //   let drawBtn = await driver.findElement(By.id("draw"));
-  //   await drawBtn.click();
-  //   await driver.findElement(By.xpath('//*[@id="choices"]'));
+  test("draw button should display div", async () => {
+    let drawBtn = await driver.findElement(By.xpath('//*[@id="draw"]'));
+    await drawBtn.click();
+    await driver.wait(until.elementsLocated(By.xpath('//*[@id="choices"]/div[1]')))
 
-  // })
+  });
+
 });
